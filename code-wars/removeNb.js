@@ -18,22 +18,19 @@
 // friend has not told the truth! 
 
 function removeNb (n) {
-  let totalSum = 0;
+  let totalSum = ((n*(n+1))/2);
   let results = [];
-  let numArray = [];
-  for(let i = 1; i <= n; i++){
-    numArray.push(i)
-    totalSum += i;
-  }
-  for(let i = 0; i < numArray.length; i++){
-    for(let j = i + 1; j < numArray.length; j++){
-      if((i*j) === (totalSum - i - j)){
-        results.push([i,j]);
-        results.push([j,i]);
-      }
+  let b;
+  for(let a = 1; a < n; a++){
+    b = (totalSum - (a)) / (a + 1);
+    if(Number.isInteger(b) && b <=n){
+      results.push([a, b])
     }
   }
   return results;
 }
-
+console.time()
 console.log(removeNb(26));
+console.timeEnd()
+
+
